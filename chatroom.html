@@ -1,0 +1,53 @@
+<head>
+	<title>chatroom</title>
+</head>
+
+<body>
+	<div class="cntr"> 
+		<div class="header">
+			{{> loginButtons}}
+			<span class='time'></span>
+		</div>
+		<div class="chatScrl">
+			<ul class="chatList">
+				{{#each chatlists}}
+					{{> chatlist}}
+				{{/each}}
+			</ul>
+		</div>
+
+		{{#if currentUser}}
+			{{loginCallback}}
+			<textarea id="textInput" placeholder="输入聊天信息"></textarea>
+			<button id="submit">发送</button>
+		{{else}}
+			{{loginCallback}}
+			<div class="alt_info">请登录（左上角）</div>
+		{{/if}}
+
+
+		<div class="online_list">
+			<h2>在线列表</h2>
+			<ul>
+				{{#each onlinelists}}
+					{{> onlinelist}}
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+</body>
+
+<template name="chatlist">
+	<li class="{{#if isNotowner}}other{{/if}}">
+		<span class='username'>{{username}} </span>
+		<span class='chattext'>{{text}} 
+			<span class='removeBtn'>&times;</span>
+		</span>
+	</li>
+</template>
+<template name="onlinelist">
+	<li>
+		<span>•</span>
+		{{username}}
+	</li>
+</template>
