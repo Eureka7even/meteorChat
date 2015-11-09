@@ -89,7 +89,7 @@ if (Meteor.isClient) {
 	});
 
 	Template.chatlist.helpers({
-		isNotowner: function() {   
+		isNotowner: function() {
 
 			setTimeout(function(){$('.chatScrl').scrollTop($('.chatList').height()-$('.chatScrl').height());},500);
 			return this.owner !== Meteor.userId();
